@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button btn_1,btn_2,btn_3,btn_4,btn_5,btn_6,btn_7,btn_8,btn_9,btn_0,add_btn,sub_btn,mul_btn,div_btn,dot_btn,ac_btn,equ_btn,mot_btn;
-    TextView textView;
+    TextView textView,sign;
     ImageButton imageButton,power_button;
     double node1,node2;
     boolean add,sub,mul,div,mod;
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         equ_btn=findViewById(R.id.equ_btn);
         mot_btn=findViewById(R.id.mod_btn);
         power_button=findViewById(R.id.power_btn);
+        sign=findViewById(R.id.signId);
         //add listener
         btn_0.setOnClickListener(this);
         btn_1.setOnClickListener(this);
@@ -109,11 +110,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             else if (v.getId()==R.id.ac_btn){
                 textView.setText("");
+                sign.setText("");
             }
             else if (v.getId()==R.id.add_btn){
                 node1=Double.parseDouble(textView.getText()+"");
                 add=true;
                 textView.setText(null);
+                sign.setText("+");
             }
             else if (v.getId()==R.id.xbtn){
                 String text=textView.getText().toString();
@@ -124,24 +127,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 node1=Double.parseDouble(textView.getText()+"");
                 sub=true;
                 textView.setText(null);
+                sign.setText("-");
             }
             else if (v.getId()==R.id.mul_btn){
                 node1=Double.parseDouble(textView.getText()+"");
                 mul=true;
                 textView.setText(null);
+                sign.setText("X");
             }
             else if (v.getId()==R.id.div_btn){
                 node1=Double.parseDouble(textView.getText()+"");
                 div=true;
                 textView.setText(null);
+                sign.setText("/");
             }
             else if (v.getId()==R.id.mod_btn){
                 node1=Double.parseDouble(textView.getText()+"");
                 mod=true;
                 textView.setText(null);
+                sign.setText("%");
             }
             else if (v.getId()==R.id.equ_btn) {
                 node2 = Double.parseDouble(textView.getText() + "");
+                sign.setText("=");
                 if (add == true) {
                     textView.setText(node1 + node2 + "");
                     add = false;
